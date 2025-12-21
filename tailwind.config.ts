@@ -47,6 +47,14 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          foreground: "hsl(var(--gold-foreground))",
+        },
+        sidebar: {
+          bg: "hsl(var(--sidebar-bg))",
+          foreground: "hsl(var(--sidebar-foreground))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

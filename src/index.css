@@ -41,6 +41,12 @@
     --gradient-hero: linear-gradient(180deg, hsl(262 83% 97%) 0%, hsl(0 0% 100%) 100%);
     --shadow-glow: 0 0 40px hsl(262 83% 58% / 0.3);
     --shadow-card: 0 4px 24px hsl(240 10% 3.9% / 0.08);
+    
+    /* Dashboard yellow/gold tokens */
+    --gold: 45 93% 47%;
+    --gold-foreground: 0 0% 0%;
+    --sidebar-bg: 240 10% 8%;
+    --sidebar-foreground: 0 0% 90%;
   }
 
   .dark {
@@ -77,6 +83,12 @@
     --gradient-hero: linear-gradient(180deg, hsl(262 50% 8%) 0%, hsl(240 10% 3.9%) 100%);
     --shadow-glow: 0 0 60px hsl(262 83% 65% / 0.25);
     --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.4);
+    
+    /* Dashboard yellow/gold tokens */
+    --gold: 45 93% 52%;
+    --gold-foreground: 0 0% 0%;
+    --sidebar-bg: 240 10% 6%;
+    --sidebar-foreground: 0 0% 90%;
   }
 }
 
