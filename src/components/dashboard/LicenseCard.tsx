@@ -1,8 +1,24 @@
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Copy, Check } from 'lucide-react';
+import { useState } from 'react';
+import { useToast } from '@/hooks/use-toast';
 
 export function LicenseCard() {
+  const [copied, setCopied] = useState(false);
+  const { toast } = useToast();
+  const licenseKey = 'PK-AGY-2024-XXXX-4532';
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(licenseKey);
+    setCopied(true);
+    toast({
+      title: "License key copied!",
+      description: "Your license key has been copied to clipboard.",
+    });
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
-    <div className="relative overflow-hidden rounded-2xl p-6 h-48 bg-gradient-to-br from-gold via-yellow-500 to-amber-600 text-gold-foreground shadow-lg">
+    <div className="relative overflow-hidden rounded-2xl p-6 bg-gradient-to-br from-gold via-yellow-500 to-amber-600 text-gold-foreground shadow-lg">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-4 right-4 w-32 h-32 rounded-full border-2 border-current" />
@@ -11,7 +27,7 @@ export function LicenseCard() {
       </div>
 
       {/* Card content */}
-      <div className="relative z-10 flex flex-col h-full justify-between">
+      <div className="relative z-10 flex flex-col h-full justify-between gap-4">
         <div className="flex items-start justify-between">
           <div>
             <p className="text-sm font-medium opacity-80">PropelKit License</p>
@@ -23,19 +39,28 @@ export function LicenseCard() {
           </div>
         </div>
 
-        <div className="space-y-2">
-          <div className="flex items-center gap-4">
-            <p className="font-mono text-lg tracking-wider">•••• •••• •••• 4532</p>
+        {/* Click to copy license key */}
+        <div 
+          onClick={handleCopy}
+          className="flex items-center justify-between gap-2 p-3 bg-black/20 rounded-lg cursor-pointer hover:bg-black/30 transition-colors group"
+        >
+          <div className="flex-1">
+            <p className="text-[10px] uppercase opacity-60 mb-1">License Key (Click to copy)</p>
+            <p className="font-mono text-sm tracking-wider">{licenseKey}</p>
           </div>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-[10px] uppercase opacity-60">License Holder</p>
-              <p className="text-sm font-medium">Tanishq Kumar</p>
-            </div>
-            <div className="text-right">
-              <p className="text-[10px] uppercase opacity-60">Valid Forever</p>
-              <p className="text-sm font-medium">Lifetime Access</p>
-            </div>
+          <div className="p-2 bg-black/20 rounded-lg group-hover:bg-black/30 transition-colors">
+            {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-[10px] uppercase opacity-60">License Holder</p>
+            <p className="text-sm font-medium">Tanishq Kumar</p>
+          </div>
+          <div className="text-right">
+            <p className="text-[10px] uppercase opacity-60">Valid Forever</p>
+            <p className="text-sm font-medium">Lifetime Access</p>
           </div>
         </div>
       </div>
