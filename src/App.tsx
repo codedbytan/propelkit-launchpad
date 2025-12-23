@@ -16,6 +16,7 @@ import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
 import AuthCallback from "./pages/AuthCallback";
 import PaymentSuccess from "./pages/PaymentSuccess";
+import OgGenerator from "./pages/OgGenerator";
 import { ProtectedRoute } from "./components/auth/ProtectedRoute";
 
 const queryClient = new QueryClient();
@@ -47,6 +48,7 @@ const App = () => (
               <Admin />
             </ProtectedRoute>
           } />
+          <Route path="/og" element={<OgGenerator />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
