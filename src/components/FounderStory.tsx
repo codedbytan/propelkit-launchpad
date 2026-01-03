@@ -1,6 +1,6 @@
 export function FounderStory() {
   return (
-    <section className="py-20 md:py-32 bg-muted/30">
+    <section className="py-24 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
           <div className="flex flex-col md:flex-row items-start gap-8">
@@ -18,26 +18,26 @@ export function FounderStory() {
 
             {/* Content */}
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              <h2 className="text-2xl md:text-3xl font-bold mb-6">
                 Hi, I'm Tanishq.
               </h2>
-              <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  I built <span className="text-foreground font-medium">PropelKit</span> because I was tired of setting up Razorpay, authentication, and email systems for every new project.
+                  I built <span className="text-foreground font-medium">PropelKit</span> because I was tired of the same painful cycle: every new project meant weeks of setting up Razorpay webhooks, building authentication from scratch, and figuring out GST compliance yet again.
                 </p>
                 <p>
-                  As an indie hacker in India, I faced the same problems over and over — dealing with GST compliance, integrating Indian payment gateways, and writing boilerplate code that took weeks instead of hours.
+                  As an indie hacker in India, I quickly realized that tools like ShipFast and other popular boilerplates were built for Western markets. USD pricing, Stripe integration, no GST handling — none of it worked for us.
                 </p>
                 <p>
-                  PropelKit is the boilerplate I wish I had when I started. It's built specifically for the Indian market, with all the integrations you need to go from idea to revenue in days, not months.
+                  So I built what I needed: a production-ready Next.js starter kit designed specifically for Indian developers. One that actually understands Razorpay's quirks, handles IGST vs CGST/SGST automatically, and generates proper GST-compliant invoices.
                 </p>
-                <p className="text-foreground font-medium">
+                <p className="text-foreground font-medium text-lg">
                   Stop reinventing the wheel. Start shipping. 🚀
                 </p>
               </div>
 
               {/* Signature */}
-              <div className="mt-6 pt-6 border-t border-border">
+              <div className="mt-8 pt-6 border-t border-border">
                 <p className="font-semibold text-foreground">Tanishq</p>
                 <p className="text-sm text-muted-foreground">Founder, PropelKit</p>
               </div>
