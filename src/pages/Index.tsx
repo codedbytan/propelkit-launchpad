@@ -1,13 +1,16 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
-import { TrustBanner } from "@/components/TrustBanner";
-import { TheProblem } from "@/components/TheProblem";
+import { PainAgitation } from "@/components/PainAgitation";
+import { IndiaStackUSP } from "@/components/IndiaStackUSP";
+import { TechStackLogos } from "@/components/TechStackLogos";
+import { ComparisonTable } from "@/components/ComparisonTable";
 import { Features } from "@/components/Features";
-import { PainCalculator } from "@/components/PainCalculator";
+import { FounderStory } from "@/components/FounderStory";
+import { VideoSection } from "@/components/VideoSection";
 import { Testimonials } from "@/components/Testimonials";
 import { Pricing } from "@/components/Pricing";
-import { FounderStory } from "@/components/FounderStory";
 import { FAQ } from "@/components/FAQ";
+import { FinalCTA } from "@/components/FinalCTA";
 import { Footer } from "@/components/Footer";
 import { StickyCTA } from "@/components/StickyCTA";
 
@@ -16,14 +19,17 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <Hero />
-      <TrustBanner />
-      <TheProblem />
+      <PainAgitation />
+      <IndiaStackUSP />
+      <TechStackLogos />
+      <ComparisonTable />
       <Features />
-      <PainCalculator />
+      <FounderStory />
+      <VideoSection />
       <Testimonials />
       <Pricing />
-      <FounderStory />
       <FAQ />
+      <FinalCTA />
       <Footer />
       <StickyCTA />
     </div>

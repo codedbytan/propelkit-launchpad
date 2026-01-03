@@ -7,44 +7,52 @@ import {
 
 const faqs = [
   {
-    question: "Can I use this for client work?",
-    answer:
-      "Yes! If you purchase the Founder's Edition (₹9,999), you get a commercial license that allows you to build unlimited client projects. The Indie Hacker plan is for personal projects only.",
+    question: "Is this a subscription or one-time payment?",
+    answer: "One-time payment. You pay ₹3,999 (Starter) or ₹7,999 (Agency) once, and own the code forever. No recurring fees, ever.",
   },
   {
-    question: "Why use PropelKit over ShipFast?",
-    answer:
-      "ShipFast uses Stripe and LemonSqueezy which don't work well for Indian businesses. PropelKit is built specifically for India with Razorpay integration and complete GST compliance — including automatic IGST/CGST/SGST calculation and B2B invoice generation with HSN codes.",
+    question: "What if I don't know Next.js?",
+    answer: "PropelKit is built for developers with basic React knowledge. The included documentation walks you through every step. Plus, you get Discord support from the community.",
+  },
+  {
+    question: "Can I use this for client projects?",
+    answer: "Only with the Agency License (₹7,999). The Starter License is for personal projects only.",
+  },
+  {
+    question: "How is this different from ShipFast or BoilerCode?",
+    answer: "Those are built for US markets (Stripe, USD, no tax logic). PropelKit has Razorpay, GST invoicing, and Indian compliance built-in. It's the only boilerplate designed for ₹ rupee businesses.",
   },
   {
     question: "Does it work with Razorpay subscriptions?",
-    answer:
-      "Absolutely! We have a complete useRazorpaySubscription hook that handles creating, updating, and canceling subscriptions. Webhook verification and smart retry logic are built-in.",
+    answer: "Absolutely! We have a complete useRazorpaySubscription hook that handles creating, updating, and canceling subscriptions. Webhook verification and smart retry logic are built-in.",
   },
   {
     question: "Is GST invoice generation automatic?",
-    answer:
-      "Yes! The GST engine automatically determines whether to apply IGST (inter-state) or CGST+SGST (intra-state) based on your business location and customer's GSTIN. PDF invoices with all required fields are generated automatically.",
+    answer: "Yes! The GST engine automatically determines whether to apply IGST (inter-state) or CGST+SGST (intra-state) based on your business location and customer's GSTIN. PDF invoices with all required fields are generated automatically.",
   },
   {
     question: "Do I need a GST number to use this?",
-    answer:
-      "You don't need a GST number to use PropelKit. However, if you're running a business in India with revenue above the threshold, you'll need to register for GST. PropelKit makes it easy to go from unregistered to GST-compliant with just your GSTIN.",
+    answer: "You don't need a GST number to use PropelKit. However, if you're running a business in India with revenue above the threshold, you'll need to register for GST. PropelKit makes it easy to go from unregistered to GST-compliant with just your GSTIN.",
   },
   {
-    question: "What if I get stuck?",
-    answer:
-      "We have an active Discord community where you can get help. Founder's Edition customers also get priority support via WhatsApp and email, plus a 1-on-1 onboarding call to get you started.",
+    question: "Do I get updates?",
+    answer: "Yes. Lifetime updates are included. When I add new features (like UPI autopay or invoice reminders), you get them free.",
   },
   {
-    question: "What tech stack does PropelKit use?",
-    answer:
-      "PropelKit is built with Next.js 14 (App Router), TypeScript, Tailwind CSS, Supabase (auth & database), Razorpay (payments), and Resend (transactional emails). Everything is strictly typed with no 'any' types.",
+    question: "What if I need help?",
+    answer: "Starter License: Discord community + documentation. Agency License: Priority WhatsApp + email support + 1-on-1 onboarding call.",
   },
   {
-    question: "Do I get lifetime updates?",
-    answer:
-      "Yes! Once you purchase PropelKit, you get access to all future updates forever. We regularly add new features, improve existing ones, and keep dependencies up to date — all included in your one-time payment.",
+    question: "What tech stack does this use?",
+    answer: "Next.js 14 (App Router), Supabase (auth + DB), Tailwind CSS, TypeScript, shadcn/ui, Razorpay, Resend (emails), Vercel (deployment).",
+  },
+  {
+    question: "How long does setup take?",
+    answer: "30-60 minutes. Clone the repo, add your API keys (Razorpay, Supabase, Resend), and deploy. The docs guide you step-by-step.",
+  },
+  {
+    question: "Can I get a refund?",
+    answer: "Yes. 7-day money-back guarantee. If you're not satisfied, email me and I'll refund you—no questions asked.",
   },
 ];
 
@@ -54,7 +62,7 @@ export function FAQ() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">
-            Frequently Asked <span className="text-gradient">Questions</span>
+            Questions? <span className="text-primary">Answers.</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Everything you need to know about PropelKit
@@ -67,9 +75,9 @@ export function FAQ() {
               <AccordionItem
                 key={i}
                 value={`item-${i}`}
-                className="bg-card border border-border rounded-xl px-6 data-[state=open]:shadow-card data-[state=open]:border-primary/30 transition-all"
+                className="bg-white/5 border border-white/10 px-6 data-[state=open]:border-primary/30 transition-all"
               >
-                <AccordionTrigger className="text-left font-semibold hover:no-underline py-5">
+                <AccordionTrigger className="text-left font-semibold hover:no-underline py-5 text-foreground">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
