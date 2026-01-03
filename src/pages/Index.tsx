@@ -1,10 +1,8 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { PainAgitation } from "@/components/PainAgitation";
-import { IndiaStackUSP } from "@/components/IndiaStackUSP";
-import { TechStackLogos } from "@/components/TechStackLogos";
-import { ComparisonTable } from "@/components/ComparisonTable";
 import { Features } from "@/components/Features";
+import { TechStackLogos } from "@/components/TechStackLogos";
 import { FounderStory } from "@/components/FounderStory";
 import { VideoSection } from "@/components/VideoSection";
 import { Testimonials } from "@/components/Testimonials";
@@ -16,14 +14,12 @@ import { StickyCTA } from "@/components/StickyCTA";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-neutral-800">
       <Navbar />
       <Hero />
       <PainAgitation />
-      <IndiaStackUSP />
-      <TechStackLogos />
-      <ComparisonTable />
       <Features />
+      <TechStackLogos />
       <FounderStory />
       <VideoSection />
       <Testimonials />
