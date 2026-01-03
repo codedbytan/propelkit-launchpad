@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, Shield, RefreshCw } from "lucide-react";
+import { ArrowRight, Zap, Shield } from "lucide-react";
 
 export function FinalCTA() {
   const scrollToPricing = () => {
@@ -11,14 +11,14 @@ export function FinalCTA() {
       <div className="container mx-auto px-4 text-center">
         {/* Headline */}
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 text-primary-foreground">
-          Stop coding boilerplate.
+          Stop Coding Boilerplate.
           <br />
-          Start building your business.
+          Start Building Your Business.
         </h2>
 
         {/* Subheadline */}
-        <p className="text-lg text-primary-foreground/80 max-w-xl mx-auto mb-8">
-          Join the first 50 Indian founders shipping with PropelKit
+        <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-8">
+          Join 200+ Indian founders who chose speed over struggle.
         </p>
 
         {/* CTA */}
@@ -27,7 +27,7 @@ export function FinalCTA() {
           size="lg"
           className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 text-lg px-10 py-7 font-semibold group"
         >
-          Get PropelKit Now — ₹3,999
+          Get PropelKit Now - ₹3,999
           <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
         </Button>
 
@@ -39,11 +39,7 @@ export function FinalCTA() {
           </div>
           <div className="flex items-center gap-2">
             <Shield className="w-4 h-4" />
-            <span>7-day money-back guarantee</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <RefreshCw className="w-4 h-4" />
-            <span>Lifetime updates included</span>
+            <span>Secure checkout via Razorpay</span>
           </div>
         </div>
       </div>

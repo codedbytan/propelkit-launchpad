@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
   { href: "#pricing", label: "Pricing" },
-  { href: "#features", label: "Demo" },
+  { href: "#features", label: "Features" },
   { href: "#testimonials", label: "Wall of Love" },
 ];
 
@@ -31,7 +31,7 @@ export function Navbar() {
   return (
     <nav
       className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "top-0" : "top-0"
+        isScrolled ? "top-0 py-0" : "top-0 py-0"
       }`}
     >
       <div className="mx-auto px-4">
@@ -65,9 +65,9 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-2">
             <Button 
               onClick={scrollToPricing}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium"
+              className="gradient-primary shadow-glow-sm text-primary-foreground font-medium"
             >
-              Get PropelKit
+              Get PropelKit Now
             </Button>
           </div>
 
@@ -100,9 +100,9 @@ export function Navbar() {
               <div className="pt-4 mt-2 border-t border-border">
                 <Button 
                   onClick={scrollToPricing}
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-medium"
+                  className="w-full gradient-primary shadow-glow text-primary-foreground font-medium"
                 >
-                  Get PropelKit
+                  Get PropelKit Now
                 </Button>
               </div>
             </div>

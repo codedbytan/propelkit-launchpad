@@ -1,222 +1,106 @@
-import { Check, Clock } from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CreditCard, FileText, Shield, Mail, Code2, Palette } from "lucide-react";
 
-interface FeatureStats {
-  timeSaved: string;
-  headaches?: string;
-  compliance?: string;
-}
-
-interface Feature {
-  title: string;
-  isIndiaOnly?: boolean;
-  benefits: string[];
-  stats: FeatureStats;
-  code: string;
-}
-
-const features: Record<string, Feature> = {
-  emails: {
-    title: "Emails",
-    benefits: [
-      "Send transactional emails",
-      "DNS setup to avoid spam folder (DKIM, DMARC, SPF)",
-      "5 pre-built email templates",
-      "Webhook to receive & forward emails",
-    ],
-    stats: { timeSaved: "3 hours", headaches: "0" },
-    code: `import { sendEmail } from '@/lib/resend';
-
-await sendEmail({
-  to: user.email,
-  subject: 'Welcome to PropelKit',
-  template: 'welcome',
-});`,
+const features = [
+  {
+    icon: CreditCard,
+    title: "Razorpay Native",
+    description: "Webhooks, Smart Retries, and Subscription logic. No 'Merchant of Record' fees.",
+    code: `const { createOrder } = useRazorpay();
+await createOrder({ amount: 3999 });`,
   },
-  payments: {
-    title: "Payments",
-    benefits: [
-      "Accept payments via Razorpay (Cards, UPI, NetBanking)",
-      "Webhook verification & signature handling",
-      "One-time payments & subscriptions",
-      "Automatic license key generation",
-    ],
-    stats: { timeSaved: "6 hours" },
-    code: `import { createOrder } from '@/lib/razorpay';
-
-const order = await createOrder({
-  amount: 3999 * 100, // paise
-  currency: 'INR',
-});`,
+  {
+    icon: FileText,
+    title: "GST Engine",
+    description: "Auto-calculates IGST vs CGST/SGST based on customer GSTIN. B2B compliant.",
+    code: `{ state: "MH", tax: "CGST+SGST", rate: "18%" }`,
   },
-  login: {
-    title: "Login",
-    benefits: [
-      "Email + password authentication",
-      "Magic link login",
-      "Google OAuth ready",
-      "Protected routes & middleware",
-    ],
-    stats: { timeSaved: "4 hours" },
-    code: `const { user } = await supabase.auth.getUser();
-
-if (!user) {
-  redirect('/login');
-}`,
+  {
+    icon: Shield,
+    title: "Supabase Auth",
+    description: "Magic Links, Google Login, and Row Level Security policies ready to go.",
+    code: `const { user } = await supabase.auth.getUser();`,
   },
-  database: {
-    title: "Database",
-    benefits: [
-      "PostgreSQL via Supabase",
-      "Type-safe queries with TypeScript",
-      "Row Level Security policies",
-      "Real-time subscriptions",
-    ],
-    stats: { timeSaved: "5 hours" },
-    code: `const { data } = await supabase
-  .from('users')
-  .select('*')
-  .eq('id', userId);`,
+  {
+    icon: Mail,
+    title: "React Email",
+    description: "Beautiful transactional emails that don't land in spam. Invoice templates included.",
+    code: `await sendInvoice({ to: user.email, invoice });`,
   },
-  seo: {
-    title: "SEO",
-    benefits: [
-      "Meta tags & Open Graph",
-      "Sitemap generation",
-      "robots.txt configured",
-      "Structured data (JSON-LD)",
-    ],
-    stats: { timeSaved: "2 hours" },
-    code: `export const metadata = {
-  title: 'Your SaaS',
-  description: 'Ship faster',
-  openGraph: { ... },
-};`,
+  {
+    icon: Code2,
+    title: "TypeScript First",
+    description: "100% TypeScript with Next.js 14 App Router. Server Components ready.",
+    code: `// Strict mode enabled, zero any types`,
   },
-  gst: {
-    title: "GST",
-    isIndiaOnly: true,
-    benefits: [
-      "Automatic IGST vs CGST+SGST calculation",
-      "Generate compliant PDF invoices",
-      "State-based tax logic pre-built",
-      "Currency formatting in ₹ (rupees)",
-    ],
-    stats: { timeSaved: "4 hours", compliance: "100%" },
-    code: `import { calculateGST } from '@/lib/gst';
-
-const tax = calculateGST({
-  amount: 3999,
-  customerState: 'MH',
-  businessState: 'KA',
-});
-// { igst: 0, cgst: 359.91, sgst: 359.91 }`,
+  {
+    icon: Palette,
+    title: "50+ UI Components",
+    description: "Pre-built dashboard, landing pages, and admin panels with Tailwind CSS.",
+    code: `<DashboardLayout> <YourApp /> </DashboardLayout>`,
   },
-  style: {
-    title: "Style",
-    benefits: [
-      "50+ pre-built Tailwind components",
-      "Dark mode by default",
-      "Responsive on all devices",
-      "shadcn/ui integration",
-    ],
-    stats: { timeSaved: "10 hours" },
-    code: `<Button variant="primary">
-  Get Started
-</Button>
-
-<Card>
-  <CardHeader>...</CardHeader>
-</Card>`,
-  },
-};
+];
 
 export function Features() {
   return (
     <section id="features" className="py-24">
       <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
+          <p className="font-mono text-sm text-primary mb-4">
+            const launch_time = '07:51 PM';
+          </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">
-            Supercharge your app instantly, launch faster, make ₹
+            Everything you need to <span className="text-primary">ship fast</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Login users, process payments and send emails at lightspeed. Spend your time building your startup, not integrating APIs.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Stop rebuilding the same features for every project. Get a production-ready foundation.
           </p>
         </div>
 
-        {/* Tabs */}
-        <Tabs defaultValue="payments" className="max-w-5xl mx-auto">
-          <TabsList className="flex flex-wrap justify-center gap-2 bg-transparent h-auto mb-8">
-            {Object.entries(features).map(([key, feature]) => (
-              <TabsTrigger
-                key={key}
-                value={key}
-                className="px-4 py-2 text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-              >
+        {/* Features Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {features.map((feature) => (
+            <div
+              key={feature.title}
+              className="group bg-white/5 border border-white/10 p-6 transition-all duration-300 hover:bg-white/[0.07] hover:border-white/20"
+            >
+              {/* Icon */}
+              <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-4">
+                <feature.icon className="w-5 h-5 text-primary" />
+              </div>
+
+              {/* Content */}
+              <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
                 {feature.title}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                {feature.description}
+              </p>
 
-          {Object.entries(features).map(([key, feature]) => (
-            <TabsContent key={key} value={key}>
-              <div className="grid md:grid-cols-2 gap-8 bg-white/5 border border-white/10 p-8">
-                {/* Left: Benefits */}
-                <div>
-                  {feature.isIndiaOnly && (
-                    <span className="inline-block px-2 py-1 text-xs font-medium bg-primary/10 text-primary mb-4">
-                      India-Only Feature
-                    </span>
-                  )}
-                  <h3 className="text-2xl font-bold mb-6">{feature.title}</h3>
-                  
-                  <ul className="space-y-3 mb-6">
-                    {feature.benefits.map((benefit, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                        <span className="text-muted-foreground">{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="flex flex-wrap gap-4">
-                    <div className="flex items-center gap-2 text-sm">
-                      <Clock className="w-4 h-4 text-primary" />
-                      <span className="text-muted-foreground">Time saved:</span>
-                      <span className="font-semibold">{feature.stats.timeSaved}</span>
-                    </div>
-                    {feature.stats.headaches !== undefined && (
-                      <div className="text-sm">
-                        <span className="text-muted-foreground">Headaches:</span>
-                        <span className="font-semibold ml-1">{feature.stats.headaches}</span>
-                      </div>
-                    )}
-                    {feature.stats.compliance && (
-                      <div className="text-sm">
-                        <span className="text-muted-foreground">Compliance:</span>
-                        <span className="font-semibold text-success ml-1">{feature.stats.compliance}</span>
-                      </div>
-                    )}
-                  </div>
+              {/* Code Preview */}
+              <div className="relative overflow-hidden">
+                {/* Window controls */}
+                <div className="flex items-center gap-1.5 px-3 py-2 bg-[#1e1e1e] border-b border-white/5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#27ca40]" />
+                  <span className="ml-2 text-[10px] text-white/40 font-mono">code.ts</span>
                 </div>
-
-                {/* Right: Code */}
-                <div className="bg-[#0a0a0a] border border-white/10 overflow-hidden">
-                  <div className="flex items-center gap-2 px-4 py-2 bg-[#111] border-b border-white/5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#27ca40]" />
-                    <span className="ml-2 text-xs text-white/40 font-mono">code.ts</span>
-                  </div>
-                  <pre className="p-4 font-mono text-xs md:text-sm overflow-x-auto">
-                    <code className="text-success">{feature.code}</code>
-                  </pre>
+                {/* Code content */}
+                <div className="bg-[#0d0d0d] p-3 font-mono text-xs overflow-x-auto">
+                  <code className="text-success">{feature.code}</code>
                 </div>
               </div>
-            </TabsContent>
+            </div>
           ))}
-        </Tabs>
+        </div>
+
+        {/* Bottom Badge */}
+        <div className="flex justify-center mt-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10">
+            <Code2 className="w-4 h-4 text-primary" />
+            <span className="text-sm font-medium text-muted-foreground">50+ pre-built components included</span>
+          </div>
+        </div>
       </div>
     </section>
   );
