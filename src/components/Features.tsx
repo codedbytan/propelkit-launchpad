@@ -34,7 +34,7 @@ await createOrder({ amount: 3999 });`,
   },
   {
     icon: Palette,
-    title: "20+ UI Components",
+    title: "50+ UI Components",
     description: "Pre-built dashboard, landing pages, and admin panels with Tailwind CSS.",
     code: `<DashboardLayout> <YourApp /> </DashboardLayout>`,
   },
@@ -44,7 +44,7 @@ export function Features() {
   return (
     <section id="features" className="py-24">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-16">
           <p className="font-mono text-sm text-primary mb-4">
             const launch_time = '07:51 PM';
           </p>
@@ -56,28 +56,28 @@ export function Features() {
           </p>
         </div>
 
-        {/* Features Grid - Stealth Cards */}
+        {/* Features Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="group bg-white/5 border border-white/10 rounded-lg p-6 transition-all duration-300 hover:bg-white/[0.07] hover:border-white/20"
+              className="group bg-white/5 border border-white/10 p-6 transition-all duration-300 hover:bg-white/[0.07] hover:border-white/20"
             >
-              {/* Icon - Yellow accent only */}
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              {/* Icon */}
+              <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-4">
                 <feature.icon className="w-5 h-5 text-primary" />
               </div>
 
               {/* Content */}
-              <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+              <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
                 {feature.title}
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                 {feature.description}
               </p>
 
-              {/* Code Preview - VS Code style */}
-              <div className="relative rounded-md overflow-hidden">
+              {/* Code Preview */}
+              <div className="relative overflow-hidden">
                 {/* Window controls */}
                 <div className="flex items-center gap-1.5 px-3 py-2 bg-[#1e1e1e] border-b border-white/5">
                   <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
@@ -87,7 +87,7 @@ export function Features() {
                 </div>
                 {/* Code content */}
                 <div className="bg-[#0d0d0d] p-3 font-mono text-xs overflow-x-auto">
-                  <code className="text-emerald-400">{feature.code}</code>
+                  <code className="text-success">{feature.code}</code>
                 </div>
               </div>
             </div>
@@ -96,9 +96,9 @@ export function Features() {
 
         {/* Bottom Badge */}
         <div className="flex justify-center mt-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10">
             <Code2 className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-muted-foreground">20+ pre-built components included</span>
+            <span className="text-sm font-medium text-muted-foreground">50+ pre-built components included</span>
           </div>
         </div>
       </div>
