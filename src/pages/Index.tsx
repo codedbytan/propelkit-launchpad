@@ -1,13 +1,10 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { TheProblem } from "@/components/TheProblem";
-import { PainCalculator } from "@/components/PainCalculator";
 import { Features } from "@/components/Features";
-import { ComparisonTable } from "@/components/ComparisonTable";
 import { Testimonials } from "@/components/Testimonials";
+import { PainCalculator } from "@/components/PainCalculator";
 import { Pricing } from "@/components/Pricing";
-import { FounderStory } from "@/components/FounderStory";
-import { BlogPreview } from "@/components/BlogPreview";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 import { StickyCTA } from "@/components/StickyCTA";
@@ -18,13 +15,10 @@ const Index = () => {
       <Navbar />
       <Hero />
       <TheProblem />
-      <PainCalculator />
       <Features />
-      <ComparisonTable />
       <Testimonials />
+      <PainCalculator />
       <Pricing />
-      <FounderStory />
-      <BlogPreview />
       <FAQ />
       <Footer />
       <StickyCTA />
