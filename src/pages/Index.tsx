@@ -1,12 +1,10 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
+import { FeaturedOn } from "@/components/FeaturedOn";
 import { PainAgitation } from "@/components/PainAgitation";
-import { IndiaStackUSP } from "@/components/IndiaStackUSP";
-import { TechStackLogos } from "@/components/TechStackLogos";
-import { ComparisonTable } from "@/components/ComparisonTable";
 import { Features } from "@/components/Features";
+import { AISection } from "@/components/AISection";
 import { FounderStory } from "@/components/FounderStory";
-import { VideoSection } from "@/components/VideoSection";
 import { Testimonials } from "@/components/Testimonials";
 import { Pricing } from "@/components/Pricing";
 import { FAQ } from "@/components/FAQ";
@@ -19,13 +17,11 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <Hero />
+      <FeaturedOn />
       <PainAgitation />
-      <IndiaStackUSP />
-      <TechStackLogos />
-      <ComparisonTable />
       <Features />
+      <AISection />
       <FounderStory />
-      <VideoSection />
       <Testimonials />
       <Pricing />
       <FAQ />
