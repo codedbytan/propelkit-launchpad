@@ -1,39 +1,39 @@
-import { Check, Sparkles, Zap, Clock } from "lucide-react";
+import { Check, Sparkles, Zap, Clock, MessageCircle, LayoutDashboard, Users, Building } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
 const plans = [
   {
-    name: "Starter",
+    name: "Indie Hacker",
     price: "₹3,999",
     originalPrice: "₹7,999",
-    description: "Perfect for indie hackers building their first SaaS.",
+    description: "For solo founders shipping side projects.",
     features: [
-      "Complete source code",
-      "Razorpay integration",
-      "GST invoicing",
-      "Supabase Auth",
-      "Email templates",
-      "Lifetime updates",
-      "Personal license",
+      { text: "Complete Source Code", bold: false },
+      { text: "Razorpay & GST Integration", bold: false },
+      { text: "Discord Community Access", bold: false },
+      { text: "Lifetime Updates", bold: false },
+      { text: "Personal License", bold: false },
     ],
     popular: false,
+    cta: "Get Started",
   },
   {
-    name: "Agency",
+    name: "Founder's Edition",
     price: "₹9,999",
     originalPrice: "₹19,999",
-    description: "For agencies and developers building for clients.",
+    description: "For serious startups & agencies.",
     features: [
-      "Everything in Starter",
-      "Commercial license",
-      "Use for unlimited client projects",
-      "Priority support",
-      "Private Discord access",
-      "Early access to new features",
-      "1-on-1 onboarding call",
+      { text: "Commercial & Client License", bold: true, icon: Building, subtext: "Sell to your clients" },
+      { text: "Full Admin Dashboard", bold: true, icon: LayoutDashboard, subtext: "User Management, Revenue Charts" },
+      { text: "Multi-Tenancy / Teams Support", bold: true, icon: Users, subtext: "Built-in team management" },
+      { text: "Priority WhatsApp Support", bold: true, icon: MessageCircle, subtext: "Direct access to founder" },
+      { text: "Everything in Indie Hacker", bold: false },
+      { text: "Early Access to New Features", bold: false },
+      { text: "1-on-1 Onboarding Call", bold: false },
     ],
     popular: true,
+    cta: "Get Founder Pack",
   },
 ];
 
@@ -50,7 +50,7 @@ export function Pricing() {
   };
 
   return (
-    <section id="pricing" className="py-20 md:py-32">
+    <section id="pricing" className="py-20 md:py-32 noise-bg">
       <div className="container mx-auto px-4">
         {/* Launch Offer Banner */}
         <div className="max-w-4xl mx-auto mb-12">
@@ -75,7 +75,7 @@ export function Pricing() {
         </div>
 
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          <h2 className="font-display text-3xl md:text-display-sm font-bold mb-4">
             Pay once, <span className="text-gradient">build forever.</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -83,58 +83,73 @@ export function Pricing() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`relative bg-card border rounded-2xl p-8 transition-all duration-300 ${
+              className={`relative rounded-3xl p-8 transition-all duration-300 ${
                 plan.popular
-                  ? "border-primary shadow-glow scale-105"
-                  : "border-border hover-lift"
+                  ? "bg-card glow-border scale-105 animate-pulse-glow"
+                  : "bg-card border border-border/50 hover-lift"
               }`}
             >
               {/* Popular Badge */}
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 gradient-primary rounded-full text-primary-foreground text-sm font-medium flex items-center gap-1">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 gradient-primary rounded-full text-primary-foreground text-sm font-semibold flex items-center gap-1.5 shadow-glow">
                   <Sparkles className="w-4 h-4" />
                   Best Value
                 </div>
               )}
 
               <div className="mb-6">
-                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+                <h3 className="text-2xl font-bold mb-2 text-foreground">{plan.name}</h3>
                 <p className="text-muted-foreground">{plan.description}</p>
               </div>
 
-              <div className="mb-6">
+              <div className="mb-8">
                 <div className="flex items-baseline gap-3">
-                  <span className="text-5xl font-bold">{plan.price}</span>
+                  <span className="text-5xl font-bold text-foreground">{plan.price}</span>
                   <span className="text-xl text-muted-foreground line-through">{plan.originalPrice}</span>
                 </div>
                 <span className="text-muted-foreground">one-time payment</span>
               </div>
 
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-4 mb-8">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                      <Check className="w-3 h-3 text-primary" />
+                  <li key={feature.text} className="flex items-start gap-3">
+                    <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                      feature.bold 
+                        ? "bg-primary/20" 
+                        : "bg-muted"
+                    }`}>
+                      {feature.bold && feature.icon ? (
+                        <feature.icon className="w-3 h-3 text-primary" />
+                      ) : (
+                        <Check className="w-3 h-3 text-primary" />
+                      )}
                     </div>
-                    <span className="text-foreground">{feature}</span>
+                    <div>
+                      <span className={`${feature.bold ? "font-semibold text-foreground" : "text-muted-foreground"}`}>
+                        {feature.text}
+                      </span>
+                      {feature.subtext && (
+                        <p className="text-xs text-muted-foreground mt-0.5">{feature.subtext}</p>
+                      )}
+                    </div>
                   </li>
                 ))}
               </ul>
 
               <Button
                 onClick={() => handleCheckout(plan.name, plan.price)}
-                className={`w-full py-6 text-lg ${
+                className={`w-full py-6 text-lg font-semibold ${
                   plan.popular
                     ? "gradient-primary shadow-glow hover:opacity-90"
-                    : ""
+                    : "bg-muted hover:bg-muted/80 text-foreground"
                 }`}
-                variant={plan.popular ? "default" : "outline"}
+                variant={plan.popular ? "default" : "secondary"}
               >
-                Get {plan.name}
+                {plan.cta}
               </Button>
             </div>
           ))}
