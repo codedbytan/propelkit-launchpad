@@ -1,4 +1,4 @@
-import { Check, X, Clock, AlertTriangle, Shield, Zap } from "lucide-react";
+import { Check, X, Clock, AlertTriangle, Shield, Zap, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const features = [
@@ -20,67 +20,59 @@ const summary = [
 
 const CheckIcon = () => (
   <div className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green-500/20 group-hover:scale-110 transition-transform duration-300">
-    <Check className="w-4 h-4 text-green-400" />
+    <Check className="w-4 h-4 text-green-500" />
   </div>
 );
 
 const XIcon = () => (
-  <div className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-500/20">
-    <X className="w-4 h-4 text-red-400" />
+  <div className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-destructive/20">
+    <X className="w-4 h-4 text-destructive" />
   </div>
 );
 
 export const ComparisonTable = () => {
   return (
-    <section className="relative py-24 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-background to-background" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-900/5 via-transparent to-transparent" />
+    <section className="py-20 md:py-32 relative overflow-hidden">
+      {/* Background - matching hero style */}
+      <div className="absolute inset-0 gradient-hero" />
       
-      {/* Grid pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px'
-        }}
-      />
+      {/* Floating orbs - matching hero */}
+      <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-1/3 left-1/4 w-48 h-48 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1.5s" }} />
 
-      <div className="container relative mx-auto px-4">
-        {/* Section Header */}
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Section Header - matching Features style */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-500/30 bg-yellow-500/10 text-yellow-400 text-sm font-medium mb-6">
-            <Zap className="w-4 h-4" />
-            Feature Comparison
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8 animate-fade-up">
+            <Sparkles className="w-4 h-4 text-primary" />
+            <span className="text-sm font-medium text-primary">Feature Comparison</span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Why Developers Choose{" "}
-            <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">PropelKit</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+            Why Developers Choose <span className="text-gradient">PropelKit</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Stop reinventing the wheel. Start with production-ready code.
           </p>
         </div>
 
         {/* Desktop Table */}
         <div className="hidden lg:block max-w-5xl mx-auto">
-          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden">
+          <div className="bg-card border border-border rounded-2xl shadow-card overflow-hidden">
             {/* Table Header */}
-            <div className="grid grid-cols-3 border-b border-white/10">
-              <div className="p-6 bg-white/5">
+            <div className="grid grid-cols-3 border-b border-border">
+              <div className="p-6 bg-muted/50">
                 <p className="font-semibold text-foreground">Feature / Task</p>
               </div>
-              <div className="p-6 bg-red-500/5 border-x border-white/10">
+              <div className="p-6 bg-destructive/5 border-x border-border">
                 <div className="flex items-center gap-2">
-                  <AlertTriangle className="w-5 h-5 text-red-400" />
-                  <p className="font-semibold text-red-400">Building from Scratch</p>
+                  <AlertTriangle className="w-5 h-5 text-destructive" />
+                  <p className="font-semibold text-destructive">Building from Scratch</p>
                 </div>
               </div>
-              <div className="p-6 bg-gradient-to-r from-yellow-500/10 to-green-500/10">
+              <div className="p-6 gradient-primary">
                 <div className="flex items-center gap-2">
-                  <Zap className="w-5 h-5 text-yellow-400" />
-                  <p className="font-semibold text-yellow-400">With PropelKit</p>
+                  <Zap className="w-5 h-5 text-primary-foreground" />
+                  <p className="font-semibold text-primary-foreground">With PropelKit</p>
                 </div>
               </div>
             </div>
@@ -90,43 +82,45 @@ export const ComparisonTable = () => {
               <div 
                 key={index}
                 className={cn(
-                  "grid grid-cols-3 group hover:bg-white/5 transition-colors",
-                  index !== features.length - 1 && "border-b border-white/5"
+                  "grid grid-cols-3 group hover:bg-muted/30 transition-colors",
+                  index !== features.length - 1 && "border-b border-border/50"
                 )}
               >
                 <div className="p-5 flex items-center">
                   <p className="text-foreground font-medium">{feature.task}</p>
                 </div>
-                <div className="p-5 flex items-center gap-3 border-x border-white/5 bg-red-500/[0.02]">
+                <div className="p-5 flex items-center gap-3 border-x border-border/50 bg-destructive/[0.02]">
                   <XIcon />
-                  <span className="text-red-400/80 text-sm">{feature.scratch}</span>
+                  <span className="text-muted-foreground text-sm">{feature.scratch}</span>
                 </div>
-                <div className="p-5 flex items-center gap-3 bg-green-500/[0.02]">
+                <div className="p-5 flex items-center gap-3 bg-primary/[0.03]">
                   <CheckIcon />
-                  <span className="text-green-400/80 text-sm">{feature.propelkit}</span>
+                  <span className="text-muted-foreground text-sm">{feature.propelkit}</span>
                 </div>
               </div>
             ))}
 
             {/* Summary Section */}
-            <div className="border-t-2 border-white/10 bg-white/5">
+            <div className="border-t-2 border-border bg-muted/30">
               {summary.map((item, index) => (
                 <div 
                   key={index}
                   className={cn(
                     "grid grid-cols-3 group",
-                    index !== summary.length - 1 && "border-b border-white/10"
+                    index !== summary.length - 1 && "border-b border-border"
                   )}
                 >
-                  <div className="p-5 flex items-center gap-3 bg-white/5">
-                    <item.icon className="w-5 h-5 text-muted-foreground" />
+                  <div className="p-5 flex items-center gap-3 bg-muted/50">
+                    <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center">
+                      <item.icon className="w-4 h-4 text-primary-foreground" />
+                    </div>
                     <p className="text-foreground font-semibold">{item.label}</p>
                   </div>
-                  <div className="p-5 flex items-center border-x border-white/10 bg-red-500/5">
-                    <span className="text-red-400 font-bold text-lg">{item.scratch}</span>
+                  <div className="p-5 flex items-center border-x border-border bg-destructive/5">
+                    <span className="text-destructive font-bold text-lg">{item.scratch}</span>
                   </div>
-                  <div className="p-5 flex items-center bg-gradient-to-r from-green-500/5 to-yellow-500/5">
-                    <span className="text-green-400 font-bold text-lg">{item.propelkit}</span>
+                  <div className="p-5 flex items-center bg-primary/10">
+                    <span className="text-gradient font-bold text-lg">{item.propelkit}</span>
                   </div>
                 </div>
               ))}
@@ -139,30 +133,31 @@ export const ComparisonTable = () => {
           </p>
         </div>
 
-        {/* Mobile Cards */}
+        {/* Mobile Cards - matching Features card style */}
         <div className="lg:hidden space-y-4">
           {features.map((feature, index) => (
             <div 
               key={index}
-              className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden"
+              className="bg-card border border-border rounded-2xl overflow-hidden hover-lift"
+              style={{ animationDelay: `${index * 50}ms` }}
             >
-              <div className="p-4 border-b border-white/10 bg-white/5">
+              <div className="p-4 border-b border-border bg-muted/50">
                 <p className="font-semibold text-foreground">{feature.task}</p>
               </div>
               <div className="grid grid-cols-2">
-                <div className="p-4 border-r border-white/10 bg-red-500/5">
+                <div className="p-4 border-r border-border bg-destructive/5">
                   <div className="flex items-center gap-2 mb-2">
                     <XIcon />
-                    <span className="text-xs text-red-400 font-medium">From Scratch</span>
+                    <span className="text-xs text-destructive font-medium">From Scratch</span>
                   </div>
-                  <p className="text-sm text-red-400/80">{feature.scratch}</p>
+                  <p className="text-sm text-muted-foreground">{feature.scratch}</p>
                 </div>
-                <div className="p-4 bg-green-500/5">
+                <div className="p-4 bg-primary/5">
                   <div className="flex items-center gap-2 mb-2">
                     <CheckIcon />
-                    <span className="text-xs text-green-400 font-medium">PropelKit</span>
+                    <span className="text-xs text-primary font-medium">PropelKit</span>
                   </div>
-                  <p className="text-sm text-green-400/80">{feature.propelkit}</p>
+                  <p className="text-sm text-muted-foreground">{feature.propelkit}</p>
                 </div>
               </div>
             </div>
@@ -174,20 +169,22 @@ export const ComparisonTable = () => {
             {summary.map((item, index) => (
               <div 
                 key={index}
-                className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden"
+                className="bg-card border border-border rounded-2xl overflow-hidden hover-lift shadow-card"
               >
-                <div className="p-4 border-b border-white/10 bg-white/5 flex items-center gap-3">
-                  <item.icon className="w-5 h-5 text-yellow-400" />
+                <div className="p-4 border-b border-border bg-muted/50 flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center shadow-glow">
+                    <item.icon className="w-4 h-4 text-primary-foreground" />
+                  </div>
                   <p className="font-semibold text-foreground">{item.label}</p>
                 </div>
                 <div className="grid grid-cols-2">
-                  <div className="p-4 border-r border-white/10 bg-red-500/5">
+                  <div className="p-4 border-r border-border bg-destructive/5">
                     <p className="text-xs text-muted-foreground mb-1">From Scratch</p>
-                    <p className="text-lg font-bold text-red-400">{item.scratch}</p>
+                    <p className="text-lg font-bold text-destructive">{item.scratch}</p>
                   </div>
-                  <div className="p-4 bg-green-500/5">
+                  <div className="p-4 bg-primary/5">
                     <p className="text-xs text-muted-foreground mb-1">PropelKit</p>
-                    <p className="text-lg font-bold text-green-400">{item.propelkit}</p>
+                    <p className="text-lg font-bold text-gradient">{item.propelkit}</p>
                   </div>
                 </div>
               </div>
