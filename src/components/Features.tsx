@@ -1,104 +1,166 @@
-import { CreditCard, FileText, Shield, Mail, Code2, Palette } from "lucide-react";
+import { useState } from "react";
 
-const features = [
+const tabs = [
   {
-    icon: CreditCard,
-    title: "Razorpay Native",
-    description: "Webhooks, Smart Retries, and Subscription logic. No 'Merchant of Record' fees.",
-    code: `const { createOrder } = useRazorpay();
-await createOrder({ amount: 3999 });`,
+    id: "emails",
+    label: "Emails",
+    title: "Send transactional emails",
+    bullets: [
+      "DNS setup to avoid spam folder (DKIM, DMARC, SPF)",
+      "Webhook to receive & forward emails",
+      "Beautiful React Email templates",
+    ],
+    timeSaved: "3 hours",
+    headaches: "0",
+    provider: "Resend",
   },
   {
-    icon: FileText,
-    title: "GST Engine",
-    description: "Auto-calculates IGST vs CGST/SGST based on customer GSTIN. B2B compliant.",
-    code: `{ state: "MH", tax: "CGST+SGST", rate: "18%" }`,
+    id: "payments",
+    label: "Payments",
+    title: "Collect payments seamlessly",
+    bullets: [
+      "Razorpay Orders API pre-configured",
+      "Webhook verification & signature handling",
+      "Automatic retry logic for failed payments",
+    ],
+    timeSaved: "6 hours",
+    headaches: "0",
+    provider: "Razorpay",
   },
   {
-    icon: Shield,
-    title: "Supabase Auth",
-    description: "Magic Links, Google Login, and Row Level Security policies ready to go.",
-    code: `const { user } = await supabase.auth.getUser();`,
+    id: "login",
+    label: "Login",
+    title: "Authenticate users securely",
+    bullets: [
+      "Google OAuth ready to go",
+      "Magic link authentication",
+      "Protected routes & middleware",
+    ],
+    timeSaved: "4 hours",
+    headaches: "0",
+    provider: "Supabase",
   },
   {
-    icon: Mail,
-    title: "React Email",
-    description: "Beautiful transactional emails that don't land in spam. Invoice templates included.",
-    code: `await sendInvoice({ to: user.email, invoice });`,
+    id: "database",
+    label: "Database",
+    title: "Store & query data efficiently",
+    bullets: [
+      "PostgreSQL with row-level security",
+      "Real-time subscriptions",
+      "Type-safe queries with TypeScript",
+    ],
+    timeSaved: "5 hours",
+    headaches: "0",
+    provider: "Supabase",
   },
   {
-    icon: Code2,
-    title: "TypeScript First",
-    description: "100% TypeScript with Next.js 14 App Router. Server Components ready.",
-    code: `// Strict mode enabled, zero any types`,
+    id: "gst",
+    label: "GST",
+    title: "Handle Indian tax compliance",
+    bullets: [
+      "Auto IGST vs CGST/SGST calculation",
+      "PDF invoice generation",
+      "B2B GSTIN validation",
+    ],
+    timeSaved: "8 hours",
+    headaches: "0",
+    provider: "PropelKit",
   },
   {
-    icon: Palette,
-    title: "50+ UI Components",
-    description: "Pre-built dashboard, landing pages, and admin panels with Tailwind CSS.",
-    code: `<DashboardLayout> <YourApp /> </DashboardLayout>`,
+    id: "style",
+    label: "Style",
+    title: "Beautiful UI out of the box",
+    bullets: [
+      "50+ Tailwind components",
+      "Dark mode support",
+      "Fully responsive design",
+    ],
+    timeSaved: "10 hours",
+    headaches: "0",
+    provider: "Tailwind",
   },
 ];
 
 export function Features() {
+  const [activeTab, setActiveTab] = useState("emails");
+  const activeFeature = tabs.find((t) => t.id === activeTab) || tabs[0];
+
   return (
-    <section id="features" className="py-24">
+    <section id="features" className="py-24 bg-neutral-800">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <p className="font-mono text-sm text-primary mb-4">
-            const launch_time = '07:51 PM';
-          </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">
-            Everything you need to <span className="text-primary">ship fast</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Stop rebuilding the same features for every project. Get a production-ready foundation.
-          </p>
-        </div>
+        {/* Header */}
+        <p className="font-mono text-sm text-primary text-center mb-4">
+          const launch_time = "07:51 PM";
+        </p>
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-center mb-4">
+          Supercharge your app instantly,
+          <br />
+          launch faster, make ₹
+        </h2>
+        <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-center mb-12">
+          Login users, process payments and send emails at lightspeed. Spend
+          your time building your startup, not integrating APIs. PropelKit
+          provides you with the boilerplate code you need to launch, FAST.
+        </p>
 
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {features.map((feature) => (
-            <div
-              key={feature.title}
-              className="group bg-white/5 border border-white/10 p-6 transition-all duration-300 hover:bg-white/[0.07] hover:border-white/20"
+        {/* Tabs */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-4 py-2 text-sm font-medium transition-all ${
+                activeTab === tab.id
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-neutral-700 text-white/70 hover:bg-neutral-600 hover:text-white"
+              }`}
             >
-              {/* Icon */}
-              <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-4">
-                <feature.icon className="w-5 h-5 text-primary" />
-              </div>
-
-              {/* Content */}
-              <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
-                {feature.title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                {feature.description}
-              </p>
-
-              {/* Code Preview */}
-              <div className="relative overflow-hidden">
-                {/* Window controls */}
-                <div className="flex items-center gap-1.5 px-3 py-2 bg-[#1e1e1e] border-b border-white/5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#27ca40]" />
-                  <span className="ml-2 text-[10px] text-white/40 font-mono">code.ts</span>
-                </div>
-                {/* Code content */}
-                <div className="bg-[#0d0d0d] p-3 font-mono text-xs overflow-x-auto">
-                  <code className="text-success">{feature.code}</code>
-                </div>
-              </div>
-            </div>
+              {tab.label}
+            </button>
           ))}
         </div>
 
-        {/* Bottom Badge */}
-        <div className="flex justify-center mt-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10">
-            <Code2 className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-muted-foreground">50+ pre-built components included</span>
+        {/* Active Tab Content */}
+        <div className="max-w-2xl mx-auto">
+          <div className="bg-neutral-900 border border-white/10 p-8">
+            <h3 className="text-xl font-semibold text-white mb-4">
+              {activeFeature.title}
+            </h3>
+            <ul className="space-y-3 mb-6">
+              {activeFeature.bullets.map((bullet, i) => (
+                <li key={i} className="flex items-start gap-3 text-white/70">
+                  <span className="text-primary mt-1">•</span>
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex items-center gap-6 text-sm">
+              <div>
+                <span className="text-white/50">Time saved:</span>{" "}
+                <span className="text-primary font-semibold">
+                  {activeFeature.timeSaved}
+                </span>
+              </div>
+              <div>
+                <span className="text-white/50">Headaches:</span>{" "}
+                <span className="text-success font-semibold">
+                  {activeFeature.headaches}
+                </span>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-6 border-t border-white/10 flex items-center gap-3">
+              <div className="w-8 h-8 bg-white/10 flex items-center justify-center text-xs font-semibold text-white">
+                {activeFeature.provider[0]}
+              </div>
+              <span className="text-sm text-white/70">
+                with{" "}
+                <span className="text-white font-medium">
+                  {activeFeature.provider}
+                </span>
+              </span>
+            </div>
           </div>
         </div>
       </div>
