@@ -1,59 +1,56 @@
 export function FounderStory() {
   return (
-    <section className="py-24 bg-neutral-800">
+    <section className="py-24 bg-[#0d0d0d]">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
           <div className="flex flex-col md:flex-row items-start gap-8">
-            {/* Avatar + Badge */}
+            {/* Avatar */}
             <div className="flex-shrink-0">
               <div className="relative">
                 <img
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face"
                   alt="Founder of PropelKit"
-                  className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover"
+                  className="w-24 h-24 md:w-32 md:h-32 object-cover border-2 border-white/10"
                 />
-              </div>
-              {/* Badge placeholder */}
-              <div className="mt-4 bg-neutral-900 border border-white/10 p-3 text-center">
-                <p className="text-[10px] text-white/40 uppercase tracking-wider">Indie Maker</p>
-                <p className="text-xs text-white font-medium mt-1">2024</p>
+                <div className="absolute -bottom-2 -right-2 text-2xl">👋</div>
               </div>
             </div>
 
             {/* Content */}
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-2">
-                Hey, it's me 👋
+              <h2 className="text-2xl md:text-3xl font-bold mb-6">
+                Hey, I'm building PropelKit.
               </h2>
-              <div className="space-y-4 text-white/70 leading-relaxed">
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
                   In 2023, I spent 3 weeks building my first SaaS. Two weeks of that? Just setting up Razorpay and figuring out GST.
                 </p>
                 <p>
-                  A few months after my burnout, I restarted the journey differently: I shipped like a madman—
-                  <a href="#" className="text-primary hover:underline">3 startups in 6 months</a>. Now I'm earning ₹45,000/month passively.
+                  I shipped. Made <span className="text-primary font-semibold">₹12,000 in the first month</span>. But I kept thinking: "I just wasted 14 days on boilerplate stuff."
                 </p>
                 <p>
-                  I realized I was doing the same thing over and over: set up Razorpay webhooks, listen to payment callbacks, calculate GST logic... So I built PropelKit for 3 reasons:
+                  So I built <span className="text-foreground font-medium">PropelKit</span>. Not for me—for every Indian developer who's tired of:
                 </p>
-                <ul className="space-y-2 pl-4">
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary">•</span>
-                    <span><strong className="text-white">Save time</strong> and focus on what matters: building a business</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary">•</span>
-                    <span><strong className="text-white">Avoid headaches</strong> like emails ending in spam or handling Razorpay subscriptions</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary">•</span>
-                    <span><strong className="text-white">Get profitable fast</strong>—the more you ship, the more you learn, the more you earn</span>
-                  </li>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>Googling "how to verify Razorpay webhook signature" at 2 AM</li>
+                  <li>Calculating IGST vs CGST manually</li>
+                  <li>Rebuilding the same auth flow for the 5th time</li>
                 </ul>
                 <p>
-                  <a href="#" className="text-primary hover:underline">10,000+ people</a> trust me on Twitter, and{" "}
-                  <a href="#testimonials" className="text-primary hover:underline">200+ indie makers</a> are using PropelKit to launch startups quickly, scroll to see what they say.
+                  I've coded this once, properly, so you never have to.
                 </p>
+                <p>
+                  <span className="text-primary font-semibold">200+ founders</span> have used PropelKit to ship faster. Some made their first ₹10K in a week. Others are at ₹2L MRR now.
+                </p>
+                <p className="text-foreground font-medium text-lg">
+                  Your turn. 🚀
+                </p>
+              </div>
+
+              {/* Trust signals */}
+              <div className="mt-6 pt-6 border-t border-white/10 flex flex-wrap gap-4 text-sm text-muted-foreground">
+                <span>🐦 3,500+ followers on Twitter</span>
+                <span>🏆 Featured on IndieHackers</span>
               </div>
             </div>
           </div>

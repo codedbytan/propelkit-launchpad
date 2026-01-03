@@ -1,46 +1,70 @@
-import { ArrowDown } from "lucide-react";
+import { Clock, ArrowDown } from "lucide-react";
 
 const painPoints = [
-  { time: "4 hrs", task: "to set up emails" },
-  { time: "+ 6 hrs", task: "designing a landing page" },
-  { time: "+ 4 hrs", task: "to handle Razorpay webhooks" },
-  { time: "+ 2 hrs", task: "for SEO tags" },
-  { time: "+ 1 hr", task: "applying for Google OAuth" },
-  { time: "+ 3 hrs", task: "for DNS records" },
-  { time: "+ 2 hrs", task: "for protected API routes" },
-  { time: "+ ∞ hrs", task: "overthinking..." },
+  { task: "Setting up Razorpay webhooks", hours: 6 },
+  { task: "Debugging GST calculations", hours: 4 },
+  { task: "Building auth + email flows", hours: 8 },
+  { task: "Designing a pricing page", hours: 3 },
+  { task: "Responsive Tailwind components", hours: 5 },
+  { task: "Writing tax invoice PDFs", hours: 2 },
 ];
 
 export function PainAgitation() {
+  const totalHours = painPoints.reduce((acc, item) => acc + item.hours, 0);
+  const totalCost = totalHours * 500; // ₹500/hr
+
   return (
-    <section className="py-24 bg-neutral-900">
+    <section className="py-24 bg-[#0d0d0d]">
       <div className="container mx-auto px-4">
-        <div className="max-w-md mx-auto">
+        <div className="max-w-3xl mx-auto text-center">
+          {/* Header */}
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-12">
+            The Real Cost of Building from Scratch
+          </h2>
+
           {/* Pain Points List */}
-          <div className="space-y-3 mb-8">
-            {painPoints.map((point, i) => (
-              <div key={i} className="flex items-center gap-3 text-white/70">
-                <span className="text-destructive font-mono min-w-[80px]">{point.time}</span>
-                <span>{point.task}</span>
+          <div className="bg-destructive/5 border border-destructive/20 p-8 mb-8">
+            <div className="space-y-4 text-left">
+              {painPoints.map((item, i) => (
+                <div
+                  key={i}
+                  className="flex items-center justify-between py-3 border-b border-destructive/10 last:border-0"
+                >
+                  <div className="flex items-center gap-3">
+                    <Clock className="w-4 h-4 text-destructive" />
+                    <span className="text-destructive">{item.task}</span>
+                  </div>
+                  <span className="font-mono text-destructive">{item.hours} hrs</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Totals */}
+            <div className="mt-8 pt-6 border-t border-destructive/20">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-muted-foreground">Total Time Wasted</span>
+                <span className="text-2xl font-bold font-mono text-destructive">{totalHours}+ hours</span>
               </div>
-            ))}
+              <div className="flex items-center justify-between">
+                <span className="text-muted-foreground">Developer Cost (at ₹500/hr)</span>
+                <span className="text-3xl font-bold font-mono text-destructive">
+                  ₹{totalCost.toLocaleString('en-IN')}
+                </span>
+              </div>
+            </div>
+
+            {/* Emoji */}
+            <p className="mt-6 text-center text-2xl">😤</p>
           </div>
 
-          {/* Total */}
-          <div className="flex items-center gap-3 text-xl font-bold text-white border-t border-white/10 pt-6 mt-6">
-            <span className="text-white/50">=</span>
-            <span className="text-destructive font-mono">22+ hours</span>
-            <span className="text-white/60 font-normal">of headaches</span>
-          </div>
-
-          {/* CTA */}
-          <div className="mt-12 text-center">
+          {/* Hook */}
+          <div className="flex flex-col items-center gap-4 animate-fade-up">
+            <p className="text-xl font-medium text-muted-foreground">There's a better way</p>
             <a
               href="#features"
-              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors group"
+              className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
             >
-              <span className="font-medium">There's an easier way</span>
-              <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
+              <ArrowDown className="w-5 h-5 animate-bounce" />
             </a>
           </div>
         </div>
