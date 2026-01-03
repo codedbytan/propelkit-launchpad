@@ -10,10 +10,11 @@ import { FounderStory } from "@/components/FounderStory";
 import { BlogPreview } from "@/components/BlogPreview";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
+import { StickyCTA } from "@/components/StickyCTA";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background dark">
       <Navbar />
       <Hero />
       <TheProblem />
@@ -26,6 +27,7 @@ const Index = () => {
       <BlogPreview />
       <FAQ />
       <Footer />
+      <StickyCTA />
     </div>
   );
 };
