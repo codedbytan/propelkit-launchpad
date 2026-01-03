@@ -7,52 +7,56 @@ import {
 
 const faqs = [
   {
-    question: "Is this a subscription or one-time payment?",
-    answer: "One-time payment. You pay ₹3,999 (Starter) or ₹7,999 (Agency) once, and own the code forever. No recurring fees, ever.",
+    question: "What do I get exactly?",
+    answer: "1/ The complete NextJS 14 boilerplate with all code to run a SaaS: Razorpay payments, Supabase database, authentication, GST invoicing, email system, and 50+ UI components. 2/ Full documentation on setup, deployment, and customization. 3/ Access to Discord community and lifetime updates.",
   },
   {
-    question: "What if I don't know Next.js?",
-    answer: "PropelKit is built for developers with basic React knowledge. The included documentation walks you through every step. Plus, you get Discord support from the community.",
+    question: "Does PropelKit work with AI (Cursor, Copilot)?",
+    answer: "Yes! PropelKit is built for AI code editors. The complete codebase gives your AI real context to build features in seconds. Just ask your AI to build what you need, and it will use PropelKit's patterns and components.",
+  },
+  {
+    question: "Is this just a template?",
+    answer: "No. It's a complete business foundation. You get payment processing, database, authentication, GST invoicing, email system, and admin dashboard. Everything you need to run a SaaS business, not just a landing page.",
+  },
+  {
+    question: "How is PropelKit different from ShipFast or other boilerplates?",
+    answer: "US boilerplates use Stripe (doesn't work well in India) and USD pricing. PropelKit has native Razorpay integration, automatic GST invoice generation (IGST/CGST/SGST), and INR currency formatting. It's the only boilerplate built specifically for the Indian market.",
   },
   {
     question: "Can I use this for client projects?",
-    answer: "Only with the Agency License (₹7,999). The Starter License is for personal projects only.",
+    answer: "Only with the Agency License (₹7,999). The Starter License is for personal projects only. Agency License allows unlimited client projects.",
   },
   {
-    question: "How is this different from ShipFast or BoilerCode?",
-    answer: "Those are built for US markets (Stripe, USD, no tax logic). PropelKit has Razorpay, GST invoicing, and Indian compliance built-in. It's the only boilerplate designed for ₹ rupee businesses.",
+    question: "What if I don't know Next.js?",
+    answer: "PropelKit works best if you have basic React knowledge. The documentation walks you through setup step-by-step. The code is clean and well-commented. Plus, Discord community is there to help.",
   },
   {
-    question: "Does it work with Razorpay subscriptions?",
-    answer: "Absolutely! We have a complete useRazorpaySubscription hook that handles creating, updating, and canceling subscriptions. Webhook verification and smart retry logic are built-in.",
+    question: "Do I need a GST number?",
+    answer: "No. You can use PropelKit without GST registration. However, if your business crosses the GST threshold, PropelKit makes it easy to become GST-compliant - just add your GSTIN and it handles everything.",
   },
   {
-    question: "Is GST invoice generation automatic?",
-    answer: "Yes! The GST engine automatically determines whether to apply IGST (inter-state) or CGST+SGST (intra-state) based on your business location and customer's GSTIN. PDF invoices with all required fields are generated automatically.",
-  },
-  {
-    question: "Do I need a GST number to use this?",
-    answer: "You don't need a GST number to use PropelKit. However, if you're running a business in India with revenue above the threshold, you'll need to register for GST. PropelKit makes it easy to go from unregistered to GST-compliant with just your GSTIN.",
+    question: "How do I get the code after purchase?",
+    answer: "Instant access. After payment, you'll receive an email with login credentials to your dashboard. Download the complete codebase as a ZIP file from there. No GitHub access needed.",
   },
   {
     question: "Do I get updates?",
-    answer: "Yes. Lifetime updates are included. When I add new features (like UPI autopay or invoice reminders), you get them free.",
-  },
-  {
-    question: "What if I need help?",
-    answer: "Starter License: Discord community + documentation. Agency License: Priority WhatsApp + email support + 1-on-1 onboarding call.",
-  },
-  {
-    question: "What tech stack does this use?",
-    answer: "Next.js 14 (App Router), Supabase (auth + DB), Tailwind CSS, TypeScript, shadcn/ui, Razorpay, Resend (emails), Vercel (deployment).",
-  },
-  {
-    question: "How long does setup take?",
-    answer: "30-60 minutes. Clone the repo, add your API keys (Razorpay, Supabase, Resend), and deploy. The docs guide you step-by-step.",
+    answer: "Yes. Lifetime updates included with both licenses. When I add new features or fix bugs, you get them free forever.",
   },
   {
     question: "Can I get a refund?",
-    answer: "Yes. 7-day money-back guarantee. If you're not satisfied, email me and I'll refund you—no questions asked.",
+    answer: "Yes. 7-day money-back guarantee. If PropelKit doesn't work for you, email me within 7 days for a full refund. No questions asked.",
+  },
+  {
+    question: "What's included in Priority Support?",
+    answer: "Agency License includes WhatsApp + Email support with <24hr response time, plus a 1-on-1 onboarding call to help you get started. Starter License includes Discord community support.",
+  },
+  {
+    question: "Is the code obfuscated?",
+    answer: "No. You get 100% readable, well-commented source code. No minification, no obfuscation. You own the code and can modify it however you want.",
+  },
+  {
+    question: "Can I hire you for custom work?",
+    answer: "Yes. If you need custom features beyond what PropelKit provides, I offer consulting at ₹5,000/hour. Email me: tanishq@propelkit.dev",
   },
 ];
 
@@ -60,13 +64,10 @@ export function FAQ() {
   return (
     <section id="faq" className="py-24">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">
-            Questions? <span className="text-primary">Answers.</span>
+            Frequently Asked Questions
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Everything you need to know about PropelKit
-          </p>
         </div>
 
         <div className="max-w-2xl mx-auto">
@@ -86,6 +87,16 @@ export function FAQ() {
               </AccordionItem>
             ))}
           </Accordion>
+        </div>
+
+        {/* Contact */}
+        <div className="text-center mt-12">
+          <p className="text-muted-foreground">
+            Still have questions?{" "}
+            <a href="mailto:tanishq@propelkit.dev" className="text-primary hover:underline">
+              Email me
+            </a>
+          </p>
         </div>
       </div>
     </section>
